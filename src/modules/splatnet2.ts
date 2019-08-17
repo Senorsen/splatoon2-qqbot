@@ -406,11 +406,11 @@ export class Splatnet2 extends BaseBotModule {
     const zncaReq = axios.create({ headers: {
       'Connection':      'Keep-Alive',
       'Accept-Encoding': 'gzip',
-      'User-Agent': 'com.nintendo.znca/1.5.0 (Android/7.1.2)',
+      'User-Agent': 'com.nintendo.znca/1.5.2 (Android/9.0.0)',
       'Accept-Language': userLang,
       'Authorization': 'Bearer',
       'X-Platform': 'Android',
-      'X-ProductVersion': '1.5.0',
+      'X-ProductVersion': '1.5.2',
     } })
     console.log('/v1/Account/Login', userId)
     const { data: { result: { webApiServerCredential: { accessToken: splatoonToken } }} } = await zncaReq.post<{
