@@ -203,12 +203,12 @@ export class Splatnet2 extends BaseBotModule {
             if (now - us.lastUsed >= 20 * 60 * 60) {
               console.log('renew', userId)
               await this.renew(userId)
+              await sleep(30 * 1000)
             }
           } catch (e) {
             console.error('renew error', e)
             this.checkErr(userId, e)
           }
-          await sleep(30 * 1000)
         }
       } catch (e) {
         console.error(e)
