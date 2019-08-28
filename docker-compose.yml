@@ -6,17 +6,19 @@ services:
     volumes:
       - "./deps/splatoon-privas:/code"
     command: python /code/src/start_rpc.py
-    network_mode: host
-    ports:
+    expose:
       - 4242
-  dev:
+    mem_limit: 128m
+    restart: always
+  bot:
     build: .
     volumes:
-      - ".:/code"
+      - "./config.json:/code/config.json"
     depends_on:
       - priva
-    network_mode: host
-    command: npm run dev
+    command: npm run prod
+    mem_limit: 150m
+    restart: always
     environment:
       - CQ_HOST=${CQ_HOST}
       - CQ_ACCESS_TOKEN=${CQ_ACCESS_TOKEN}
